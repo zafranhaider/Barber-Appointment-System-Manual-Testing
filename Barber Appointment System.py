@@ -1,9 +1,16 @@
 import tkinter as tk
+from tkinter import messagebox
 import webbrowser
 
 def submit_name():
     global username
     username = name_entry.get()
+
+    # Check if the username is not empty
+    if not username:
+        messagebox.showinfo("Error", "Please enter your name.")
+        return
+
     name_entry.delete(0, tk.END)  # Clear the entry field
     show_main_page()
 
@@ -15,8 +22,8 @@ def show_main_page():
     global main_page
     main_page = tk.Tk()
     main_page.title("Barber Appointment System")
-    main_page.geometry("400x300")
-    main_page.configure(bg="blue")
+    main_page.geometry("1366x768")
+    main_page.configure(bg="gray")
 
     welcome_label = tk.Label(main_page, text=f"Hello, {username}!", bg="blue", fg="white")
     welcome_label.pack(pady=20)
@@ -49,8 +56,8 @@ def select_cut(cut_type):
 def appointment_page(cut_type):
     appointment_page = tk.Tk()
     appointment_page.title("Barber Appointment System")
-    appointment_page.geometry("400x300")
-    appointment_page.configure(bg="blue")
+    appointment_page.geometry("1366x768")
+    appointment_page.configure(bg="gray")
 
     day_label = tk.Label(appointment_page, text="Enter Day:", bg="blue", fg="white")
     day_label.pack(pady=10)
@@ -68,6 +75,11 @@ def appointment_page(cut_type):
     submit_button.pack(pady=20)
 
 def appointment_confirmation(cut_type, day, time):
+    # Check if day and time are not empty
+    if not day or not time:
+        messagebox.showinfo("Error", "Please enter both day and time.")
+        return
+
     confirmation_page = tk.Toplevel()
     confirmation_page.title("Barber Appointment System")
     confirmation_page.geometry("1280x720")
@@ -84,12 +96,11 @@ def appointment_confirmation(cut_type, day, time):
 
     confirmation_page.mainloop()
 
-
 # First Page
 first_page = tk.Tk()
 first_page.title("Barber Appointment System")
-first_page.geometry("400x300")
-first_page.configure(bg="blue")
+first_page.geometry("1366x768")
+first_page.configure(bg="gray")
 
 logo_label = tk.Label(first_page, text="Created And Tested By Zafran Haider", bg="blue", fg="white")
 logo_label.pack(side="bottom")
