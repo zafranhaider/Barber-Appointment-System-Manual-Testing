@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox
+from tkinter import PhotoImage
 import webbrowser
+from subprocess import Popen
 
 def submit_name():
     global username
@@ -23,7 +25,7 @@ def show_main_page():
     main_page = tk.Tk()
     main_page.title("Barber Appointment System")
     main_page.geometry("1366x768")
-    main_page.configure(bg="gray")
+    main_page.configure(bg="orange")
 
     welcome_label = tk.Label(main_page, text=f"Hello, {username}!", bg="blue", fg="white")
     welcome_label.pack(pady=20)
@@ -31,19 +33,19 @@ def show_main_page():
     options_label = tk.Label(main_page, text="Here are the options. Which type of cut do you want?", bg="blue", fg="white")
     options_label.pack(pady=10)
 
-    fade_button = tk.Button(main_page, text="Fade Cut", bg="green", command=lambda: select_cut("Fade Cut"))
+    fade_button = tk.Button(main_page, text="Fade Cut", bg="green", command=lambda: Popen(["python","book.pak"]))
     fade_button.pack(pady=5)
 
-    buzz_button = tk.Button(main_page, text="Buzz Cut", bg="green", command=lambda: select_cut("Buzz Cut"))
+    buzz_button = tk.Button(main_page, text="Buzz Cut", bg="green", command=lambda: Popen(["python","book.pak"]))
     buzz_button.pack(pady=5)
 
-    undercut_button = tk.Button(main_page, text="UnderCut", bg="green", command=lambda: select_cut("UnderCut"))
+    undercut_button = tk.Button(main_page, text="UnderCut", bg="green", command=lambda: Popen(["python","book.pak"]))
     undercut_button.pack(pady=5)
 
-    crew_cut_button = tk.Button(main_page, text="Crew Cut", bg="green", command=lambda: select_cut("Crew Cut"))
+    crew_cut_button = tk.Button(main_page, text="Crew Cut", bg="green", command=lambda: Popen(["python","book.pak"]))
     crew_cut_button.pack(pady=5)
 
-    temple_cut_button = tk.Button(main_page, text="Temple Cut", bg="green", command=lambda: select_cut("Temple Cut"))
+    temple_cut_button = tk.Button(main_page, text="Temple Cut", bg="green", command=lambda: Popen(["python","book.pak"]))
     temple_cut_button.pack(pady=5)
 
     exit_button = tk.Button(main_page, text="Exit", bg="green", command=main_page.quit)
